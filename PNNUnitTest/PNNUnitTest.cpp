@@ -1,15 +1,15 @@
 // PNNUnitTest.cpp                                         (c) DIR, 2020
 //
-//              Объявление и реализация класса
-// PNNUnitTest - Модульное тестирование
+//              ГЋГЎГєГїГўГ«ГҐГ­ГЁГҐ ГЁ Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГї ГЄГ«Г Г±Г±Г 
+// PNNUnitTest - ГЊГ®Г¤ГіГ«ГјГ­Г®ГҐ ГІГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ
 //
 ////////////////////////////////////////////////////////////////////////
 
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "FileBase.h"
-#include "PeerNetNode.h"
-#include "BlkChain.h"
+#include "..\PeerNetNode\FileBase.h"
+#include "..\PeerNetNode\PeerNetNode.h"
+#include "..\PeerNetNode\BlkChain.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 /*
@@ -87,17 +87,17 @@ namespace PNNUnitTest
     {
       Logger::WriteMessage("In ~PNNUnitTest()");
     }
-    // Тестирование метода CPeerNetNode::ParseMessage().
-    // Принцип тестирования: синтаксический разбор заранее заготовленных 
-    //сообщений и сравнение результатов с ожидаемыми значениями
+    // Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ Г¬ГҐГІГ®Г¤Г  CPeerNetNode::ParseMessage().
+    // ГЏГ°ГЁГ­Г¶ГЁГЇ ГІГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГї: Г±ГЁГ­ГІГ ГЄГ±ГЁГ·ГҐГ±ГЄГЁГ© Г°Г Г§ГЎГ®Г° Г§Г Г°Г Г­ГҐГҐ Г§Г ГЈГ®ГІГ®ГўГ«ГҐГ­Г­Г»Гµ 
+    //Г±Г®Г®ГЎГ№ГҐГ­ГЁГ© ГЁ Г±Г°Г ГўГ­ГҐГ­ГЁГҐ Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў Г± Г®Г¦ГЁГ¤Г ГҐГ¬Г»Г¬ГЁ Г§Г­Г Г·ГҐГ­ГЁГїГ¬ГЁ
     TEST_METHOD(ParseMessageTest)
     {
       //ECommandCode  CPeerNetNode::ParseMessage(TMessageBuf &mbMess,
       //                                         WORD &iNodeFrom, WORD &iNodeTo)
-      //mbMess[in] - сообщение
-      //  TCHAR  _chMess[CHARBUFSIZE];  //буфер сообщения (TCHAR=wchar_t)
-      //  WORD   _wMessBytes;   //общая длина сообщения в байтах (вместе с '\0')
-      static TMessageBuf  mbCmnds[] = { //массив тестовых сообщений
+      //mbMess[in] - Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ
+      //  TCHAR  _chMess[CHARBUFSIZE];  //ГЎГіГґГҐГ° Г±Г®Г®ГЎГ№ГҐГ­ГЁГї (TCHAR=wchar_t)
+      //  WORD   _wMessBytes;   //Г®ГЎГ№Г Гї Г¤Г«ГЁГ­Г  Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Гў ГЎГ Г©ГІГ Гµ (ГўГ¬ГҐГ±ГІГҐ Г± '\0')
+      static TMessageBuf  mbCmnds[] = { //Г¬Г Г±Г±ГЁГў ГІГҐГ±ГІГ®ГўГ»Гµ Г±Г®Г®ГЎГ№ГҐГ­ГЁГ©
         TMessageBuf(_T("AAA 0102")),
         TMessageBuf(_T("ACK 0203")),
         TMessageBuf(_T("DTB 0304")),
@@ -106,8 +106,8 @@ namespace PNNUnitTest
       };
       static int n = sizeof(mbCmnds) / sizeof(TMessageBuf);
 	  TCHAR chMess[CHARBUFSIZE];
-      WORD iNodeFrom,   //iNodeFrom - индекс исходящего узла сети
-           iNodeTo;     //iNodeTo   - индекс входящего узла сети
+      WORD iNodeFrom,   //iNodeFrom - ГЁГ­Г¤ГҐГЄГ± ГЁГ±ГµГ®Г¤ГїГ№ГҐГЈГ® ГіГ§Г«Г  Г±ГҐГІГЁ
+           iNodeTo;     //iNodeTo   - ГЁГ­Г¤ГҐГЄГ± ГўГµГ®Г¤ГїГ№ГҐГЈГ® ГіГ§Г«Г  Г±ГҐГІГЁ
 	  Logger::WriteMessage("CPeerNetNode::ParseMessageTest() -- in");
 	  for (int i = 0; i < n; i++) {
         swprintf_s(chMess, CHARBUFSIZE,

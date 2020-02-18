@@ -194,7 +194,7 @@ configuration: Debug # Release
 # "project" is relative to the original build directory and not influenced by directory changes in "before_build".
 build:
 #  parallel: true                  # enable MSBuild parallel builds
-  project: PeerNetNode.sln        # path to Visual Studio solution or project
+  project: PeerNetNode\PeerNetNode.sln        # path to Visual Studio solution or project
 #  publish_wap: true               # package Web Application Projects (WAP) for Web Deploy
 #  publish_wap_xcopy: true         # package Web Application Projects (WAP) for XCopy deployment
 #  publish_wap_beanstalk: true     # Package Web Applications for AWS Elastic Beanstalk deployment
